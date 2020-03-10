@@ -1,0 +1,48 @@
+import random
+# no betting on 0
+# betting 2/3
+
+count = 0
+start_money = 500
+min_money = 100
+win_count = 0
+loss_count = 0
+
+while count < 1000:
+
+    count += 1
+    spin = random.randint(0, 36)
+    n=10
+
+
+    print("====start=====")
+    print(count)
+    print('roulette', spin)
+
+    if spin <= 24 :
+        win_count = win_count + 1
+        loss_count = loss_count
+        bet = n
+        print ("bet", bet)
+        start_money = start_money + (bet*0.5)
+        print("outcome",start_money)
+        print ("win count", win_count)
+        print ("loss count", loss_count)
+        print("win")
+        if start_money >= 550:
+         break
+
+
+
+    else:
+        win_count = win_count
+        loss_count = loss_count+1
+        bet = n
+        print ("bet", bet)
+        start_money = start_money - bet
+        print("outcome",start_money)
+        print ("win count", win_count)
+        print ("loss count", loss_count)
+        print ("lost")
+        if start_money < min_money:
+          break
