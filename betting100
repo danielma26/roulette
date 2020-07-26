@@ -1,81 +1,83 @@
 import random
 
 count = 0
-initial_money =1000
 start_money = 1000
-goal_money =1100
-
+initial_money=1000
 win_count = 0
 loss_count = 0
-iteration = 0
-overall = 0
-bet = 0
+iteration=0
+overall=0
+bet=0
+overall=0
 while count < 100:
 
     count += 1
     spin = random.randint(0, 37)
-    outmoney = 0
-    n = 100
+    outmoney =0
+    n=100
+
 
     print("====start=====")
     print(count)
     print('roulett', spin)
 
-#win and above start money
-    if spin <= 17 and start_money >= initial_money:
+    if spin <= 17 and start_money >= initial_money :
         bet = n
-        print("bet", bet)
+        print ("bet", bet)
         start_money = start_money + bet
-        print("outcome", start_money)
-        win_count = win_count + 1
-        loss_count = loss_count
-        print("win count", win_count)
-        print("loss count", loss_count)
+        print("outcome",start_money)
+        win_count = win_count+1
+        loss_count=loss_count
+        print ("win count", win_count)
+        print ("loss count", loss_count)
+        print ("total", overall)
         print("win")
-        if start_money == goal_money:
-            break
-#lost and above win loney
+        overall = 0
+        if start_money == 1200:
+           break
+
     elif spin > 17 and start_money >= initial_money:
         bet = n
-        print("bet", bet)
+        print ("bet", bet)
         start_money = start_money - bet
-        print("outcome", start_money)
-        win_count = win_count
-        loss_count = loss_count + 1
-        print("lost")
-        print("win count", win_count)
-        print("loss count", loss_count)
+        print("outcome",start_money)
+        win_count=win_count
+        loss_count = loss_count+1
+        overall = loss_count - win_count
+        overall = 0
+        print ("lost")
+        print ("win count", win_count)
+        print ("loss count", loss_count)
 
 
 
-#win but below initial money
-    elif spin <= 17 and start_money < initial_money:
-        win_count = win_count + 1
+
+    elif spin <= 17 and start_money < initial_money :
+        win_count = win_count+1
         loss_count = loss_count
 
-        bet = (2 ** (overall)) * n
-        #bet = n
-        print("bet", bet)
+        bet = (2**(overall) )* n
+        print ("bet", bet)
         start_money = start_money + bet
-        print("outcome", start_money)
-        print("win")
-        print("win count", win_count)
-        print("loss count", loss_count)
+        print("outcome",start_money)
+        print ("win")
+        print ("win count", win_count)
+        print ("loss count", loss_count)
+        overall = 0
         if start_money < 500:
-            break
-#lost but above initial money
+           break
+
     else:
         win_count = win_count
         loss_count = loss_count + 1
-        #bet = n
-        bet = (2 ** (overall)) * n
-        print("bet", bet)
+
+        bet = (2**(overall)) * n
+        print ("bet", bet)
         start_money = start_money - bet
-        print("outcome", start_money)
-        print("lost")
-        print("win count", win_count)
-        print("loss count", loss_count)
-        if start_money < 600:
-            break
-
-
+        print("outcome",start_money)
+        print ("lost")
+        print ("win count", win_count)
+        print ("loss count", loss_count)
+        overall = overall+1
+        if start_money < 500:
+          break
