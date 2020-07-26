@@ -3,6 +3,7 @@ import random
 count = 0
 start_money = 1000
 initial_money=1000
+low_money =100
 win_count = 0
 loss_count = 0
 iteration=0
@@ -64,7 +65,7 @@ while count < 100:
         print ("win count", win_count)
         print ("loss count", loss_count)
         overall = 0
-        if start_money < 500:
+        if start_money < low_money:
            break
 
     else:
@@ -79,5 +80,5 @@ while count < 100:
         print ("win count", win_count)
         print ("loss count", loss_count)
         overall = overall+1
-        if start_money < 500:
+        if start_money < low_money:
           break
