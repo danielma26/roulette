@@ -1,0 +1,34 @@
+import random
+
+def spin_roulette_wheel():
+    return random.randint(0, 36)
+
+def bet_on_odd():
+    result = spin_roulette_wheel()
+    return result % 2 != 0
+
+def play_roulette_with_doubling(num_rounds):
+    balance = 100  # Starting balance
+    bet_amount = 1  # Initial bet amount
+    wins = 0
+    
+    for _ in range(num_rounds):
+        if bet_on_odd():
+            print(f"You won {bet_amount}!")
+            wins += 1
+            balance += bet_amount
+            bet_amount = 1  # Reset bet amount on win
+        else:
+            print(f"You lost {bet_amount}. Doubling your bet.")
+            balance -= bet_amount
+            bet_amount *= 2  # Double the bet on loss
+    
+    win_percentage = (wins / num_rounds) * 100
+    print("\nGame Over")
+    print(f"Total rounds: {num_rounds}")
+    print(f"Wins: {wins}")
+    print(f"Win percentage: {win_percentage}%")
+    print(f"Final balance: {balance}")
+
+# Example: Play roulette with doubling bets for 10 rounds
+play_roulette_with_doubling(10)
